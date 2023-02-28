@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 04 nov. 2022 à 17:40
--- Version du serveur : 10.4.25-MariaDB
--- Version de PHP : 8.1.10
+-- Généré le : mar. 28 fév. 2023 à 08:50
+-- Version du serveur : 10.4.27-MariaDB
+-- Version de PHP : 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cars` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nom` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -113,7 +113,7 @@ INSERT INTO `cars_drivers` (`car_id`, `deiver_id`) VALUES
 
 CREATE TABLE `drivers` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -137,11 +137,11 @@ INSERT INTO `drivers` (`id`, `nom`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -153,7 +153,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -181,11 +181,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `notifications` (
-  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `notifiable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `notifiable_type` varchar(255) NOT NULL,
   `notifiable_id` bigint(20) UNSIGNED NOT NULL,
-  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data` text NOT NULL,
   `read_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -213,8 +213,8 @@ INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -226,11 +226,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -245,8 +245,8 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `posts` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` varchar(255) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -257,22 +257,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Molestiae voluptatibus voluptas quam voluptates hic rerum mollitia eaque.', 'Et praesentium animi non alias.', 4, '2022-10-27 09:03:08', '2022-10-31 10:59:39'),
-(2, 'Tempora odio odio enim maiores facere ab dolores.', 'Qui aut pariatur tenetur repellat voluptas sunt sunt nulla.', 5, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(4, 'Repudiandae temporibus enim suscipit eum laborum.', 'Impedit facilis facere ut beatae sint quam ipsum.', 5, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(5, 'Aut quaerat nam perspiciatis tempore et.', 'Ratione qui accusamus labore laboriosam labore odit.', 5, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(6, 'Quia maiores esse sunt voluptas.', 'Quibusdam dolorem doloremque quam nesciunt.', 1, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(7, 'Quo qui tempora provident modi vel vitae.', 'Non consectetur deleniti id delectus eveniet sed.', 2, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(8, 'Molestias atque ab voluptatem facilis reprehenderit.', 'Nihil est veniam aut.', 2, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(9, 'Consequatur nam ut nobis voluptas sunt.', 'Fuga ullam in dolorum animi et.', 1, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(17, 'Laravel', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et fermentum dui. Ut orci quam.', 1, '2022-10-27 15:00:14', '2022-10-27 15:00:14'),
-(18, 'PhP', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et fermentum dui. Ut orci quam, ornare sed lorem sed, hendrerit auctor dolor. Nulla viverra, nibh quis ultrices malesuada, ligula ipsum.', 1, '2022-10-27 15:45:39', '2022-10-27 15:45:39'),
-(19, 'ddddd', 'ddddd', 1, '2022-10-28 07:08:34', '2022-10-28 07:08:34'),
-(20, 'At natus harum maiores et ducimus qui laborum.', 'Doloremque qui ullam molestiae consequatur maxime illum est fugiat.', 1, '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(22, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et.', 4, '2022-11-02 10:02:28', '2022-11-02 10:02:28'),
-(23, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et.', 4, '2022-11-02 10:04:09', '2022-11-02 10:04:09'),
-(24, 'Lorem Ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et.', 4, '2022-11-02 10:05:43', '2022-11-02 10:05:43'),
-(25, 'lorem ipsum', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam et.', 4, '2022-11-02 10:20:44', '2022-11-02 10:20:44');
+(1, 'aa', 'aa', 1, '2023-02-27 12:56:27', '2023-02-27 12:56:27'),
+(2, 'vvv', 'vvv', 1, '2023-02-27 12:57:44', '2023-02-27 12:57:44'),
+(3, 'sss', 'aaa', 1, '2023-02-27 14:00:33', '2023-02-27 14:00:33');
 
 -- --------------------------------------------------------
 
@@ -282,7 +269,7 @@ INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -303,33 +290,34 @@ INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
   `role_id` int(11) DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `role_id`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Alexander Kassulke Jr.', 2, 'hsenger@example.com', '2022-10-27 09:03:08', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'IDV8BKgGOa', '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(2, 'Mr. Sonny Durgan PhD', 2, 'curt17@example.org', '2022-10-27 09:03:08', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'XLuhuQnRRA', '2022-10-27 09:03:08', '2022-10-27 09:03:08'),
-(4, 'hamid', 1, 'hamid@hamid.com', NULL, '$2y$10$TgAaYP/RkxY9IvvpHHOomucLj8RJrGonIQRxeLcOKUFp4/jo9D4IO', NULL, '2022-10-28 14:56:07', '2022-10-28 14:56:07'),
-(5, 'test', 2, 'test@gmail.com', NULL, '$2y$10$YWJiCZmeXJRxhwLcc5.S6OY3c5RYuRfL4Iwdb2Ub9yiZZ3srhqz2u', NULL, '2022-10-31 08:07:55', '2022-10-31 08:07:55'),
-(10, 'achraf', NULL, 'cccc@ccc.com', NULL, '$2y$10$kg9x.aatRXmBObbhODSkA.5vGuGKzHFRtrYW1a2IdxXta0Znc.BgS', NULL, '2022-11-02 11:54:35', '2022-11-02 11:54:35'),
-(11, 'achraf', NULL, 'cccc@cccc.com', NULL, '$2y$10$s3vcM0DfrAo5PdJ0B8kiduv3UKJBV2wE.dSKAoVEjuiPZQh/19f4e', NULL, '2022-11-02 11:55:49', '2022-11-02 11:55:49'),
-(12, 'achraf', NULL, 'ccccd@cccc.com', NULL, '$2y$10$TtlPZSGOzlcAyglvhkujUumhRYttrgY1QsPbBFuvwhjZ32UOQqcBa', NULL, '2022-11-02 12:07:09', '2022-11-02 12:07:09'),
-(13, 'achraf', NULL, 'ccccd@csccc.com', NULL, '$2y$10$y3xIu4DmrN/UkwOMxZdBYeSneZXhWe8CY0C2wou7H8gXR1dHSX9ke', NULL, '2022-11-02 12:08:07', '2022-11-02 12:08:07'),
-(14, 'achraf', NULL, 'ccccd@csccc.comc', NULL, '$2y$10$YouDQzPA2YzcaOOfoZc3GuoLN9Y4lbz38FP5FBKfU7AQ0oOrr6Zhe', NULL, '2022-11-02 12:11:50', '2022-11-02 12:11:50'),
-(15, 'ttt', NULL, 'ttt@ss.com', NULL, '$2y$10$tbUmyjYaFLRotix6jE9mj.UoDCPmyfWc/S7YSCykRlgL8vTINExKu', NULL, '2022-11-02 13:25:12', '2022-11-02 13:25:12'),
-(16, 'dd@ww.com', NULL, 'dd@ww.com', NULL, '$2y$10$.7w4QqJMBBpg4blwuclvI.OuHxfOSpt24wDzjL1zCZU5tttzyW9fG', NULL, '2022-11-02 15:21:02', '2022-11-02 15:21:02'),
-(17, 'register', NULL, 'eeeeeeee@eeeee', NULL, '$2y$10$FJnQ6A.Y7yMjl3a18F6Ox.0SyXLXnrDHjoMFeJ8mkS8DwFvDTyM8G', NULL, '2022-11-02 15:21:47', '2022-11-02 15:21:47');
+INSERT INTO `users` (`id`, `name`, `role_id`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Alexander Kassulke Jr.', 2, 'hsenger@example.com', '2022-10-27 09:03:08', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'IDV8BKgGOa', '2022-10-27 09:03:08', '2022-10-27 09:03:08', NULL),
+(2, 'Mr. Sonny Durgan PhD', 2, 'curt17@example.org', '2022-10-27 09:03:08', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'XLuhuQnRRA', '2022-10-27 09:03:08', '2022-10-27 09:03:08', NULL),
+(4, 'hamid', 1, 'hamid@hamid.com', NULL, '$2y$10$TgAaYP/RkxY9IvvpHHOomucLj8RJrGonIQRxeLcOKUFp4/jo9D4IO', NULL, '2022-10-28 14:56:07', '2022-10-28 14:56:07', NULL),
+(5, 'test', 2, 'test@gmail.com', NULL, '$2y$10$YWJiCZmeXJRxhwLcc5.S6OY3c5RYuRfL4Iwdb2Ub9yiZZ3srhqz2u', NULL, '2022-10-31 08:07:55', '2022-10-31 08:07:55', NULL),
+(10, 'achraf', NULL, 'cccc@ccc.com', NULL, '$2y$10$kg9x.aatRXmBObbhODSkA.5vGuGKzHFRtrYW1a2IdxXta0Znc.BgS', NULL, '2022-11-02 11:54:35', '2022-11-02 11:54:35', NULL),
+(11, 'achraf', NULL, 'cccc@cccc.com', NULL, '$2y$10$s3vcM0DfrAo5PdJ0B8kiduv3UKJBV2wE.dSKAoVEjuiPZQh/19f4e', NULL, '2022-11-02 11:55:49', '2022-11-02 11:55:49', NULL),
+(12, 'achraf', NULL, 'ccccd@cccc.com', NULL, '$2y$10$TtlPZSGOzlcAyglvhkujUumhRYttrgY1QsPbBFuvwhjZ32UOQqcBa', NULL, '2022-11-02 12:07:09', '2022-11-02 12:07:09', NULL),
+(13, 'achraf', NULL, 'ccccd@csccc.com', NULL, '$2y$10$y3xIu4DmrN/UkwOMxZdBYeSneZXhWe8CY0C2wou7H8gXR1dHSX9ke', NULL, '2022-11-02 12:08:07', '2022-11-02 12:08:07', NULL),
+(14, 'achraf', NULL, 'ccccd@csccc.comc', NULL, '$2y$10$YouDQzPA2YzcaOOfoZc3GuoLN9Y4lbz38FP5FBKfU7AQ0oOrr6Zhe', NULL, '2022-11-02 12:11:50', '2022-11-02 12:11:50', NULL),
+(15, 'ttt', NULL, 'ttt@ss.com', NULL, '$2y$10$tbUmyjYaFLRotix6jE9mj.UoDCPmyfWc/S7YSCykRlgL8vTINExKu', NULL, '2022-11-02 13:25:12', '2022-11-02 13:25:12', NULL),
+(16, 'dd@ww.com', NULL, 'dd@ww.com', NULL, '$2y$10$.7w4QqJMBBpg4blwuclvI.OuHxfOSpt24wDzjL1zCZU5tttzyW9fG', NULL, '2022-11-02 15:21:02', '2022-11-02 15:21:02', NULL),
+(17, 'register', NULL, 'eeeeeeee@eeeee', NULL, '$2y$10$FJnQ6A.Y7yMjl3a18F6Ox.0SyXLXnrDHjoMFeJ8mkS8DwFvDTyM8G', NULL, '2022-11-02 15:21:47', '2022-11-02 15:21:47', NULL);
 
 --
 -- Index pour les tables déchargées
@@ -438,7 +426,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
