@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\PostExport;
 use App\Mail\PostMail;
 use App\Models\Post;
+use App\Models\Test;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,6 +29,18 @@ class PostController extends Controller
     {
         $posts = Post::Paginate(3);
         $users = User::whereNotNull('created_at')->get();
+        $post = Post::all();
+        foreach ($post as $key => $value) {
+            // dd(\Carbon\Carbon::parse($value->created_at)->year(now()->format('Y'))->addMonth(3)->format('Y-m-d'));
+            // $carbon = [\Carbon\Carbon::parse($value->created_at)->addMonth(3),\Carbon\Carbon::parse($value->created_at)->addMonth(6),\Carbon\Carbon::parse($value->created_at)->addMonth(9),\Carbon\Carbon::parse($value->created_at)->addMonth(12)];
+            // foreach ($carbon as $key => $date) {
+            //     $test = new Test();
+            //     $test->date_test = $date;
+            //     $test->save();
+            //     # code...
+            // }
+            # code...   
+        }
         return view('post.posts',compact('posts','users'));
     }
 

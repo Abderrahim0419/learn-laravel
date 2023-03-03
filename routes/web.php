@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    // $date = Carbon\Carbon::now();
+    // $datee = [Carbon\Carbon::now()->addMonths(3),Carbon\Carbon::now()->addMonths(6),Carbon\Carbon::now()->addMonths(9),Carbon\Carbon::now()->addMonths(12)];
+    // dd($datee);
     // dd(explode('-',str_replace(' ','','gfgf-fff-fff-fff-fff')));
     return view('welcome');
 });
