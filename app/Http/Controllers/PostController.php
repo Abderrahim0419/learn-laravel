@@ -63,6 +63,7 @@ class PostController extends Controller
     public function create()
     {
         $user = User::all();
+        $post = [];
         // $test = DB::table('users')
         // ->leftjoin('posts','posts.user_id','=','users.id')
         // ->selectRaw('*')
@@ -85,9 +86,9 @@ class PostController extends Controller
         $post->user_id = $request->user;
         $post->save();
         Mail::to('test@gmail.com')->send(new PostMail());
-            Alert::toast('Success Add','success');
-            // return response()->json(['success' => true]); 
-            return to_route('posts')->with('message','Data ADD succefuly');
+        Alert::toast('Success Add','success');
+        // return response()->json(['success' => true]); 
+        return to_route('posts')->with('message','Data ADD succefuly');
 
     }
     
