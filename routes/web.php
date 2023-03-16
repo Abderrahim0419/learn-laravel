@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,15 @@ Route::get('/', function () {
     // dd(explode('-',str_replace(' ','','gfgf-fff-fff-fff-fff')));
     return view('welcome');
 });
-
+Route::get('/insert-slug', function () {
+    $car = \App\Models\Car::all();
+    foreach ($car as $key => $value) {
+        $value->slug = Str::slug($value->nom);
+        $value->save();
+        # code...
+    }
+    return dd("done");
+});
 
 
 

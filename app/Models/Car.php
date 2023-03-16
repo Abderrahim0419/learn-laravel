@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class Car extends Model
 {
@@ -38,5 +39,32 @@ class Car extends Model
         else{
             return "";
         }
+    }
+    public function SetNomAttribute($value){
+        $this->attributes['nom'] = $value;
+        $this->attributes['slug'] = $this->mySlug($value);
+    }
+    private function mySlug($value = " "){
+        $is_exist = true;
+        $counter = 0;
+        while ($is_exist) {
+            
+            if($counter == 0){
+                $car = Self::where('slug',Str::slug($value))->first();
+                if(!$car){
+                    $route_new =Str::slug($value);
+                    $is_exist =false;
+                }
+            }
+            else{
+                $car = Self::where('slug',$value.'-'.$counter)->first();
+                if(!$car){
+                    $route_new = Str::slug($value).'-'.$counter++;
+                    $is_exist =false;
+                }
+            } 
+            $counter++;
+        }
+        return $route_new;
     }
 }
