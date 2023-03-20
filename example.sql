@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 28 fév. 2023 à 08:50
+-- Généré le : lun. 20 mars 2023 à 10:33
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.1.12
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cars` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nom` varchar(255) NOT NULL,
+  `slug` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -39,29 +40,19 @@ CREATE TABLE `cars` (
 -- Déchargement des données de la table `cars`
 --
 
-INSERT INTO `cars` (`id`, `nom`, `image`, `created_at`, `updated_at`) VALUES
-(2, 'dacia logan', '20221031160111.jpg', '2022-10-28 14:32:54', '2022-10-31 15:01:11'),
-(3, 'Incassable', '20221031171554.jpg', '2022-10-28 14:33:29', '2022-10-31 16:15:54'),
-(4, 'mercedes 240', '20221031160053.jpg', '2022-10-28 14:48:26', '2022-10-31 15:00:53'),
-(5, 'docker', '20221031160044.jpg', '2022-10-31 07:01:00', '2022-10-31 15:00:44'),
-(14, 'car009', '20221031171610.jpg', '2022-10-31 14:12:55', '2022-10-31 16:16:10'),
-(17, 'car009', '20221031152504.jpg', '2022-10-31 14:25:04', '2022-10-31 14:25:04'),
-(18, 'lorem ipsum', '20221102113449.jpg', '2022-11-02 10:34:49', '2022-11-02 10:34:49'),
-(19, 'lorem ipsum', '20221102114849.jpg', '2022-11-02 10:48:49', '2022-11-02 10:48:49'),
-(36, 'qqqqqqqqq', '20221103093409.jpg', '2022-11-03 08:34:09', '2022-11-03 08:34:09'),
-(37, 'test', '20221103094742.jpg', '2022-11-03 08:47:42', '2022-11-03 08:47:42'),
-(38, 'lorem ipsum', '20221103095716.jpg', '2022-11-03 08:57:16', '2022-11-03 08:57:16'),
-(39, 'test', '20221103095851.jpg', '2022-11-03 08:58:51', '2022-11-03 08:58:51'),
-(40, 'test', '20221103105458.jpg', '2022-11-03 09:54:58', '2022-11-03 09:54:58'),
-(41, 'zzzzzzzzzzzzz', '20221103105735.jpg', '2022-11-03 09:57:35', '2022-11-03 09:57:35'),
-(42, 'zzzzzzzzzzzzz', '20221103105759.jpg', '2022-11-03 09:57:59', '2022-11-03 09:57:59'),
-(43, 'zzzzzzzzzzzzz', '20221103105809.jpg', '2022-11-03 09:58:09', '2022-11-03 09:58:09'),
-(44, 'ggggggggggg', '20221103110113.jpg', '2022-11-03 10:01:13', '2022-11-03 10:01:13'),
-(45, 'test', '20221103111342.jpg', '2022-11-03 10:13:42', '2022-11-03 10:13:42'),
-(46, 'test', '20221103111436.jpg', '2022-11-03 10:14:36', '2022-11-03 10:14:36'),
-(47, 'Lorem ipsum dolor.', '20221103112842.jpg', '2022-11-03 10:28:42', '2022-11-03 10:28:42'),
-(48, 'Lorem ipsum dolor.', '20221103112906.jpg', '2022-11-03 10:29:06', '2022-11-03 10:29:06'),
-(49, 'Lorem ipsum dolor.', '20221103112920.jpg', '2022-11-03 10:29:20', '2022-11-03 10:29:20');
+INSERT INTO `cars` (`id`, `nom`, `slug`, `image`, `created_at`, `updated_at`) VALUES
+(2, 'dacia logan', 'dacia-logan', '20221031160111.jpg', '2022-10-28 14:32:54', '2023-03-16 09:19:46'),
+(3, 'Incassable', 'incassable', '20221031171554.jpg', '2022-10-28 14:33:29', '2023-03-16 09:19:46'),
+(4, 'mercedes 240', 'mercedes-240', '20221031160053.jpg', '2022-10-28 14:48:26', '2023-03-16 09:19:46'),
+(5, 'docker', 'docker', '20221031160044.jpg', '2022-10-31 07:01:00', '2023-03-16 09:19:46'),
+(14, 'car009', 'car009', '20221031171610.jpg', '2022-10-31 14:12:55', '2023-03-16 09:19:46'),
+(36, 'qqqqqqqqq', 'qqqqqqqqq', '20221103093409.jpg', '2022-11-03 08:34:09', '2023-03-16 09:21:55'),
+(38, 'lorem ipsum', 'lorem-ipsum', '20221103095716.jpg', '2022-11-03 08:57:16', '2023-03-16 09:21:55'),
+(41, 'zzzzzzzzzzzzz', 'zzzzzzzzzzzzz', '20221103105735.jpg', '2022-11-03 09:57:35', '2023-03-16 09:21:55'),
+(44, 'ggggggggggg', 'ggggggggggg', '20221103110113.jpg', '2022-11-03 10:01:13', '2023-03-16 09:21:55'),
+(45, 'test', 'test', '20221103111342.jpg', '2022-11-03 10:13:42', '2023-03-16 09:21:55'),
+(47, 'Lorem ipsum dolor.', 'lorem-ipsum-dolor', '20221103112842.jpg', '2022-11-03 10:28:42', '2023-03-16 09:21:55'),
+(50, 'mercedes 240', 'mercedes-240-1', '20230316102302.gif', '2023-03-16 09:23:02', '2023-03-16 09:23:02');
 
 -- --------------------------------------------------------
 
@@ -103,7 +94,9 @@ INSERT INTO `cars_drivers` (`car_id`, `deiver_id`) VALUES
 (40, 2),
 (41, 2),
 (42, 2),
-(43, 2);
+(43, 2),
+(50, 4),
+(50, 5);
 
 -- --------------------------------------------------------
 
@@ -172,7 +165,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2022_10_27_133827_create_cars_drivers_table', 3),
 (14, '2022_10_31_082257_create_roles_table', 4),
 (16, '2022_11_02_103100_create_tests_table', 5),
-(17, '2022_11_02_112233_create_notifications_table', 6);
+(17, '2022_11_02_112233_create_notifications_table', 6),
+(18, '2023_03_01_080453_create_tests_table', 7);
 
 -- --------------------------------------------------------
 
@@ -197,6 +191,7 @@ CREATE TABLE `notifications` (
 
 INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
 ('02c88dcc-9e4f-449d-8ae3-3113512f35f9', 'App\\Notifications\\NewCarNotification', 'App\\Models\\User', 4, '{\"name\":\"test\",\"email\":\"\"}', NULL, '2022-11-03 09:54:58', '2022-11-04 08:12:19'),
+('204823e8-7b7f-40f5-8279-7a6468fe91d3', 'App\\Notifications\\NewCarNotification', 'App\\Models\\User', 4, '{\"name\":\"mercedes 240\",\"email\":\"\"}', NULL, '2023-03-16 09:23:02', '2023-03-16 09:23:02'),
 ('2677755e-ac4e-4830-a63e-797a482cf979', 'App\\Notifications\\NewCarNotification', 'App\\Models\\User', 4, '{\"name\":\"test\",\"email\":\"\"}', NULL, '2022-11-03 10:14:36', '2022-11-04 08:56:34'),
 ('2a7b8f1c-3317-4862-b496-0c5ab7ec3c95', 'App\\Notifications\\NewUserNotification', 'App\\Models\\User', 4, '{\"name\":\"register\",\"email\":\"eeeeeeee@eeeee\"}', NULL, '2022-11-02 15:21:47', '2022-11-04 08:12:22'),
 ('4838e2fa-7560-4ed8-9203-a7f859b5d012', 'App\\Notifications\\NewUserNotification', 'App\\Models\\User', 4, '{\"name\":\"ttt\",\"email\":\"ttt@ss.com\"}', NULL, '2022-11-02 13:25:12', '2022-11-04 07:56:45'),
@@ -259,7 +254,15 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'aa', 'aa', 1, '2023-02-27 12:56:27', '2023-02-27 12:56:27'),
 (2, 'vvv', 'vvv', 1, '2023-02-27 12:57:44', '2023-02-27 12:57:44'),
-(3, 'sss', 'aaa', 1, '2023-02-27 14:00:33', '2023-02-27 14:00:33');
+(3, 'sss', 'aaa', 1, '2023-02-27 14:00:33', '2023-02-27 14:00:33'),
+(4, 'ssss', 'sssssssssssssssssssssssssssssssssssssssssssssssssssss', 1, '2023-03-14 10:59:08', '2023-03-14 10:59:08'),
+(5, 'zzz', 'qqq', 1, '2023-03-14 10:59:53', '2023-03-14 10:59:53'),
+(6, 'zzz', 'qqq', 1, '2023-03-14 11:00:17', '2023-03-14 11:00:17'),
+(7, 'aa', 'aaa', 1, '2023-03-14 11:00:31', '2023-03-14 11:00:31'),
+(8, 'vvvvvv', 'bb', 1, '2023-03-14 11:11:29', '2023-03-14 11:11:29'),
+(9, 'z', 'x', 1, '2023-03-14 11:12:12', '2023-03-14 11:12:12'),
+(10, 'ccc', 'ccc', 1, '2023-03-14 11:34:30', '2023-03-14 11:34:30'),
+(11, 'mm', 'mm', 1, '2023-03-14 11:39:17', '2023-03-14 11:39:17');
 
 -- --------------------------------------------------------
 
@@ -281,6 +284,37 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', NULL, NULL),
 (2, 'user normal', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tests`
+--
+
+CREATE TABLE `tests` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `date_test` datetime NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `tests`
+--
+
+INSERT INTO `tests` (`id`, `date_test`, `created_at`, `updated_at`) VALUES
+(1, '2023-05-27 13:56:27', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(2, '2023-08-27 13:56:27', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(3, '2023-11-27 13:56:27', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(4, '2024-02-27 13:56:27', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(5, '2023-05-27 13:57:44', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(6, '2023-08-27 13:57:44', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(7, '2023-11-27 13:57:44', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(8, '2024-02-27 13:57:44', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(9, '2023-05-27 15:00:33', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(10, '2023-08-27 15:00:33', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(11, '2023-11-27 15:00:33', '2023-03-01 07:06:52', '2023-03-01 07:06:52'),
+(12, '2024-02-27 15:00:33', '2023-03-01 07:06:52', '2023-03-01 07:06:52');
 
 -- --------------------------------------------------------
 
@@ -327,7 +361,8 @@ INSERT INTO `users` (`id`, `name`, `role_id`, `email`, `email_verified_at`, `pas
 -- Index pour la table `cars`
 --
 ALTER TABLE `cars`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `slug` (`slug`);
 
 --
 -- Index pour la table `drivers`
@@ -382,6 +417,12 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `tests`
+--
+ALTER TABLE `tests`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -396,7 +437,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT pour la table `drivers`
@@ -414,7 +455,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT pour la table `personal_access_tokens`
@@ -426,13 +467,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `tests`
+--
+ALTER TABLE `tests`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `users`
