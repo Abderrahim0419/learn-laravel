@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', function () {
+    // dd(\Carbon\Carbon::now()->setTimezone('Africa/Casablanca'));
     // $date = Carbon\Carbon::now();
     // $datee = [Carbon\Carbon::now()->addMonths(3),Carbon\Carbon::now()->addMonths(6),Carbon\Carbon::now()->addMonths(9),Carbon\Carbon::now()->addMonths(12)];
     // dd($datee);

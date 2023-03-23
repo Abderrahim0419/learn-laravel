@@ -1,11 +1,11 @@
-    <?php
+<?php
 
 namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
