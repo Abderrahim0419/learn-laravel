@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::Paginate(3);
+        $posts = Post::Paginate(3)
         $users = User::whereNotNull('created_at')->get();
         $post = Post::all();
         foreach ($post as $key => $value) {
