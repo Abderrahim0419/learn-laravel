@@ -9,6 +9,6 @@ class Driver extends Model
 {
     use HasFactory;
     public function car(){
-        return $this->BelongsToMany(Car::class,'cars_drivers','deiver_id','car_id');
+        return $this->BelongsToMany(Car::class,'cars_drivers','deiver_id','car_id')->withPivot('qte','name');
     }
 }

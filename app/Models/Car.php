@@ -12,7 +12,7 @@ class Car extends Model
 {
     use HasFactory,Notifiable;
     public function driver(){
-        return $this->BelongsToMany(Driver::class,'cars_drivers','car_id','deiver_id');
+        return $this->BelongsToMany(Driver::class,'cars_drivers','car_id','deiver_id')->withPivot('qte','name');
     }
     
     // public function setImageAttribute($image){

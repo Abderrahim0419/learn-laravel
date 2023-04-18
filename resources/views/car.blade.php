@@ -28,8 +28,9 @@
                         <tr>
                             <td> {{$item->nom}} </td>
                             <td> 
+                                {{-- {{dd($item->driver)}} --}}
                                 @foreach ($item->driver as $driver)
-                                    <span class="text-success"> {{$driver->nom}} ,</span>
+                                    <span class="text-success"> {{$driver->nom}} ,{{$driver->pivot->qte}}{{$driver->pivot->name}}</span>
                                 @endforeach
                             </td>
                             <td><img src="{{$item->getImage()}}" height="100" alt="" srcset=""></td>
