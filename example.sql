@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 20 mars 2023 à 10:33
+-- Généré le : mar. 18 avr. 2023 à 17:09
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.1.12
 
@@ -62,41 +62,43 @@ INSERT INTO `cars` (`id`, `nom`, `slug`, `image`, `created_at`, `updated_at`) VA
 
 CREATE TABLE `cars_drivers` (
   `car_id` int(11) NOT NULL,
-  `deiver_id` int(11) NOT NULL
+  `deiver_id` int(11) NOT NULL,
+  `qte` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `cars_drivers`
 --
 
-INSERT INTO `cars_drivers` (`car_id`, `deiver_id`) VALUES
-(2, 3),
-(3, 3),
-(2, 1),
-(2, 2),
-(2, 4),
-(2, 5),
-(3, 1),
-(4, 4),
-(4, 5),
-(5, 5),
-(14, 2),
-(17, 1),
-(5, 1),
-(4, 1),
-(4, 2),
-(18, 1),
-(19, 2),
-(36, 1),
-(37, 2),
-(38, 1),
-(39, 1),
-(40, 2),
-(41, 2),
-(42, 2),
-(43, 2),
-(50, 4),
-(50, 5);
+INSERT INTO `cars_drivers` (`car_id`, `deiver_id`, `qte`, `name`) VALUES
+(2, 3, 12, 'dddd'),
+(3, 3, 12, 'dddd'),
+(2, 1, 12, 'dddd'),
+(2, 2, 12, 'dddd'),
+(2, 4, 12, 'dddd'),
+(2, 5, 12, 'dddd'),
+(3, 1, 12, 'dddd'),
+(4, 4, 12, 'dddd'),
+(4, 5, 12, 'dddd'),
+(5, 5, 12, 'dddd'),
+(14, 2, 12, 'dddd'),
+(17, 1, 12, 'dddd'),
+(5, 1, 12, 'dddd'),
+(4, 1, 12, 'dddd'),
+(4, 2, 12, 'dddd'),
+(18, 1, 12, 'dddd'),
+(19, 2, 12, 'dddd'),
+(36, 1, 12, 'dddd'),
+(37, 2, 12, 'dddd'),
+(38, 1, 12, 'dddd'),
+(39, 1, 12, 'dddd'),
+(40, 2, 12, 'dddd'),
+(41, 2, 12, 'dddd'),
+(42, 2, 12, 'dddd'),
+(43, 2, 12, 'dddd'),
+(50, 4, 12, 'dddd'),
+(50, 5, 12, 'dddd');
 
 -- --------------------------------------------------------
 
@@ -262,7 +264,9 @@ INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated
 (8, 'vvvvvv', 'bb', 1, '2023-03-14 11:11:29', '2023-03-14 11:11:29'),
 (9, 'z', 'x', 1, '2023-03-14 11:12:12', '2023-03-14 11:12:12'),
 (10, 'ccc', 'ccc', 1, '2023-03-14 11:34:30', '2023-03-14 11:34:30'),
-(11, 'mm', 'mm', 1, '2023-03-14 11:39:17', '2023-03-14 11:39:17');
+(11, 'mm', 'mm', 1, '2023-03-14 11:39:17', '2023-03-14 11:39:17'),
+(12, 'qq', 'qq', 1, '2023-04-06 11:25:09', '2023-04-06 11:25:09'),
+(13, 'ffff', 'lllll', 3, '2023-04-10 16:00:10', '2023-04-10 16:00:10');
 
 -- --------------------------------------------------------
 
@@ -467,7 +471,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
